@@ -45,7 +45,12 @@ makeCacheMatrix <- function(x = matrix()) {
 #  Function: cacheSolve
 # Arguments: x - being the matrix that will be converted to an inverse matrix
 #                and cached
-#          : ... - other parameters as requiresd
+#          : ... - other parameters as required
+#   Returns: the inverted matrix 
+#     Notes: calculates the inverted matrix and then stores the inversion in
+#            a cahce varibale. This allows a second and subsequent calls to
+#            return the cached version instead of performing the potentially
+#            time consuming calculation again.
 #############################################################################
 cacheSolve <- function(x, ...) {
   # get the value of the cached inversed matrix variable
@@ -54,14 +59,12 @@ cacheSolve <- function(x, ...) {
   # If the variable is not null, it means it has been cached so return that
   # instead of calculating a new inversed matrix
   if (!is.null(m)) {
-    message("Here is the cached version of the inversed matrix")
+    message("returning the cached version of the inversed matrix")
     return(m)
   } else {                             # We have some work to do to do
     data <- x$get()                    # get the value of the original matrix
-    m <- x                             # need to change this line to invert
-    x$setinverse(m)                    # sets the cache var with the inverse
+    m <- solve(data)                   # call func to calc inverted matrix ## CHANGE THIS LINE
+    x$setinverse(m)                    # caches the inverted matrix
     return(m)                          # and returns it.
   }
-  
-  
 }
