@@ -63,8 +63,8 @@ cacheSolve <- function(x, ...) {
     return(m)
   } else {                             # We have some work to do to do
     data <- x$get()                    # get the value of the original matrix
-    m <- solve(data)                   # call func to calc inverted matrix ## CHANGE THIS LINE
+    m <- solve(data)                   # call func to calc inverted matrix 
     x$setinverse(m)                    # caches the inverted matrix
-    return(m)                          # and returns it.
+    return(m)                          # and return it.
   }
 }
