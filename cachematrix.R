@@ -3,7 +3,7 @@
 # Author: Alex mPittendreigh
 #   Date: 21 May 2014
 #  Notes: This module of related functions will create a Matrix and also 
-#       : return the mean of the inverted matrix using a caching system
+#       : return the inverted matrix using a caching system
 #############################################################################
 
 #############################################################################
@@ -25,23 +25,28 @@ makeCacheMatrix <- function(x = matrix()) {
     x
   }
   
-  # inner function that will set the mean into the cache variable
-  setmean <- function(mean) {
-    m <<- mean
+  # inner function that will set the inverse of the matrix into the 
+  # cache variable
+  setinverse <- function(inverse) {
+    m <<- inverse
   }
   
-  # inner function that will returned the cached mean values value
-  getmean <- function() {
+  # inner function that will returned the cached inversed matrix
+  getinverse <- function() {
     m
   }
   
   # return the new object back as a list
-  list(set = set, get = get, setmean = setmean, getmean = getmean)
+  list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
 
-## Write a short comment describing this function
-
+#############################################################################
+#  Function: cacheSolve
+# Arguments: x - being the matrix that will be converted to an inverse matrix
+#                and cached
+#          : ... - other parameters as requiresd
+#############################################################################
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 }
